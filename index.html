@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <title>TOWER of Evolution - LD24 compo game by SiENcE^schattenkind.net</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta name="description" content="ludum dare game - tower of evolution" />
+  <meta name="keywords" content="tower of evolution, toe, melonJS, HTML5, javascript, game, ludum dare, SiENcE, crankgaming, schattenkind.net" />
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+  <style type="text/css">
+	  body { background-color:black; }
+	  h1 { color:#FFFFFF; background-color:black; font-family:Helvetica,Verdana; }
+	  h2 { color:#FFFFFF; background-color:black; font-family:Helvetica,Verdana;}
+	  #framecounter { color:#AAAAAA; font-size:8px; font-family:Helvetica,Verdana; letter-spacing:1px;}
+	  #content { color:#BBBBBB; font-size:small; font-family:Helvetica,Verdana; letter-spacing:2px;}
+	  #content_footer { color:#CCCCCC; font-size:0.8em; font-family:Helvetica,Verdana; letter-spacing:2px;}
+	  #footer { color:#BBBBBB; font-size:small; font-family:Helvetica,Verdana;}
+	  a:link {color:#FFFFFF;}    /* unvisited link */
+	  a:visited {color:#BBBBBB;} /* visited link */
+	  a:hover {color:#DD0000;}   /* mouse over link */
+	  a:active {color:#FF0000;}  /* selected link */
+ </style>
+ <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-577849-8']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+			<center>
+				<h1>TOE </h1>
+				<h2>_TOWER of Evolution_</h2>
+			</center>
+        </div>
+      </div>
+     </div>
+    <div id="site_content">
+		<div id="content">
+			<center>
+			<p>Ludum Dare 48h Compo Entry</p>
+			<p><b>Instructions : arrow keys to move and jump</b></p>
+			<span id="framecounter">(0/0 fps)</span>
+			</center>
+			<center>
+			<div id="jsapp"></div>
+			<script type="text/javascript" src="lib/melonJS-0.9.4.js"></script>
+			<script type="text/javascript" src="js/ressources.js"></script>
+			<script type="text/javascript" src="js/gameObj.js"></script>
+			<script type="text/javascript" src="js/main.js"></script>
+			</center>
+		</div>
+    </div>
+	<center>
+    <div id="content_footer"><br><a href="http://www.ludumdare.com/compo/ludum-dare-24/?action=preview&uid=10298" target="_blank">Please rate this game for Ludum Dare 24 compo.</a><br><br></div>
+	</center>
+	<center>
+    <div id="footer">
+      Copyright &copy; 2012 <a href="mailto:seabeams@gmx.de">Florian Fischer</a>^SiENcE^<a href="http://crankgaming.blogspot.com" target="_blank">crankgaming.blogspot.com</a><br>
+	  (part of <a href="http://schattenkind.net/" target="_blank">schattenkind.net</a> )
+    </div>
+	</center>
+  </div>
+</body>
+</html>
