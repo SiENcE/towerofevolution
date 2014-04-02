@@ -8,18 +8,40 @@
   <meta name="keywords" content="tower of evolution, toe, melonJS, HTML5, javascript, game, ludum dare, SiENcE, crankgaming, schattenkind.net" />
   <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
   <style type="text/css">
-	  body { background-color:black; }
-	  h1 { color:#FFFFFF; background-color:black; font-family:Helvetica,Verdana; }
-	  h2 { color:#FFFFFF; background-color:black; font-family:Helvetica,Verdana;}
-	  #framecounter { color:#AAAAAA; font-size:8px; font-family:Helvetica,Verdana; letter-spacing:1px;}
-	  #content { color:#BBBBBB; font-size:small; font-family:Helvetica,Verdana; letter-spacing:2px;}
-	  #content_footer { color:#CCCCCC; font-size:0.8em; font-family:Helvetica,Verdana; letter-spacing:2px;}
-	  #footer { color:#BBBBBB; font-size:small; font-family:Helvetica,Verdana;}
-	  a:link {color:#FFFFFF;}    /* unvisited link */
-	  a:visited {color:#BBBBBB;} /* visited link */
-	  a:hover {color:#DD0000;}   /* mouse over link */
-	  a:active {color:#FF0000;}  /* selected link */
- </style>
+	.center {
+		margin: auto;
+	}
+	canvas {
+		padding-left: 0;
+		padding-right: 0;
+		margin-left: auto;
+		margin-right: auto;
+		display: block;
+		image-rendering: optimizeSpeed;
+		image-rendering:-webkit-optimize-contrast;
+		image-rendering: -moz-crisp-edges;
+		-ms-interpolation-mode: nearest-neighbor;
+		background: #FFFFFF;
+	}
+	@font-face {
+		   font-family: "Munro";
+		   src: url( "fonts/munro_small.ttf" );
+		   src: local ('Ø'),
+		   url( "fonts/munro_small.ttf" ) format("truetype");
+	}
+	body { background-color:black; }
+	h1 { color:#FFFFFF; font-size:1.0em; font-family: "Munro", Helvetica; text-align: center }
+	h2 { color:#FFFFFF; font-size:1.0em; font-family: "Munro", Helvetica; text-align: center }
+	#framecounter { color:#AAAAAA; font-size:10px; font-family: "Munro", Helvetica; letter-spacing:1px; }
+	#screen { position: absolute; z-index: 100; overflow: hidden; }
+	#content 		{ color:#BBBBBB; font-size:small; font-family: "Munro", Helvetica; letter-spacing:2px; text-align: center }
+	#content_footer { color:#CCCCCC; font-size:0.8em; font-family: "Munro", Helvetica; letter-spacing:2px; text-align: center }
+	#footer 		{ color:#BBBBBB; font-size:small; font-family: "Munro", Helvetica; text-align: center }
+	a:link {color:#FFFFFF;}    /* unvisited link */
+	a:visited {color:#BBBBBB;} /* visited link */
+	a:hover {color:#DD0000;}   /* mouse over link */
+	a:active {color:#FF0000;}  /* selected link */
+</style>
  <script type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-577849-8']);
@@ -31,45 +53,42 @@
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script>
+<script src='http://www.kongregate.com/javascripts/kongregate_api.js'></script>
 </head>
 
 <body>
-  <div id="main">
+  <div id="main" >
     <div id="header">
       <div id="logo">
         <div id="logo_text">
-			<center>
-				<h1>TOE </h1>
-				<h2>_TOWER of Evolution_</h2>
-			</center>
+			<h1>TOWER of Evolution</h1>
         </div>
       </div>
      </div>
-    <div id="site_content">
+	 
+	<div>
 		<div id="content">
-			<center>
-			<p>Ludum Dare 48h Compo Entry</p>
-			<p><b>Instructions : arrow keys to move and jump</b></p>
-			<span id="framecounter">(0/0 fps)</span>
-			</center>
-			<center>
+<!--			<span id="framecounter">(0/0 fps)</span> -->
+			<a href="http://www.ludumdare.com/compo/ludum-dare-24/?action=preview&uid=10298" target="_blank">Please rate this game for Ludum Dare 24 compo</a>
+			<br><br>
 			<div id="jsapp"></div>
-			<script type="text/javascript" src="lib/melonJS-0.9.4.js"></script>
-			<script type="text/javascript" src="js/ressources.js"></script>
-			<script type="text/javascript" src="js/gameObj.js"></script>
-			<script type="text/javascript" src="js/main.js"></script>
-			</center>
+			<br>
 		</div>
     </div>
-	<center>
-    <div id="content_footer"><br><a href="http://www.ludumdare.com/compo/ludum-dare-24/?action=preview&uid=10298" target="_blank">Please rate this game for Ludum Dare 24 compo.</a><br><br></div>
-	</center>
-	<center>
+	
+    <div id="content_footer">
+		<a href="https://twitter.com/crank_gaming" style="color: rgb(131, 154, 177);" target="_blank"><img width="24" height="24" src="icons/twitter_24.png" alt="twitter.com/crank_gaming" /></a>
+		<a href="http://crankgaming.blogspot.com"  style="color: rgb(131, 154, 177);" target="_blank"><img width="24" height="24" src="icons/blogger_24.png" alt="crankgaming.blogspot.com" /></a>
+		<a href="http://www.youtube.com/user/Sience2001"  style="color: rgb(131, 154, 177);" target="_blank"><img width="24" height="24" src="icons/youtube_24.png" alt="youtube.com/user/Sience2001" /></a>
+	</div>
+	
     <div id="footer">
-      Copyright &copy; 2012 <a href="mailto:seabeams@gmx.de">Florian Fischer</a>^SiENcE^<a href="http://crankgaming.blogspot.com" target="_blank">crankgaming.blogspot.com</a><br>
-	  (part of <a href="http://schattenkind.net/" target="_blank">schattenkind.net</a> )
+      Copyright &copy; 2012 by Florian Fischer^SiENcE^member of <a href="http://schattenkind.net/" target="_blank">schattenkind.net</a><br>
+	  Contact <a href="mailto:seabeams@gmx.de"><img width="14" height="14" src="icons/email-regular.gif" alt="twitter.com/crank_gaming" /></a>
     </div>
-	</center>
-  </div>
-</body>
+	
+	<script type="text/javascript" src="lib/melonJS-0.9.4.js"></script>
+	<script type="text/javascript" src="js/ressources.js"></script>
+	<script type="text/javascript" src="js/gameObj.js"></script>
+	<script type="text/javascript" src="js/main.js"></script></body>
 </html>

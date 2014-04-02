@@ -23,7 +23,7 @@
 			
 			// update the hit box
 //			this.updateColRect(7,12, -1,0);
-			this.updateColRect(7,10, 6,26);
+			this.updateColRect(5,14, 6,26);
 			
 			this.dying = false;
 		
@@ -171,6 +171,10 @@
 				{
 				   this.dieCross();
 				}
+				else if (res.obj.type == "endObject")
+				{
+					me.state.change(me.state.GAMEOVER);
+				}
 			}
 			
 			if (this.vel.x!=0 || this.vel.y!=0 || (this.onladder && doClimb) || this.isFlickering())
@@ -213,14 +217,12 @@
 			{
 				this.setCurrentAnimation("dead", "walk");
 
-				// flash the screen
-				me.game.viewport.fadeIn("#FFFFFF", 75);
-				
 				// DIE sound!!
-				me.audio.play("die", false);
-				
-				// TODO: TAKE IN and don't forget!!!!
-				this.respawn();
+				me.audio.play("die_post", false);
+
+				// flash the screen
+//				me.game.viewport.fadeIn("#FFFFFF", 75);
+				me.game.viewport.fadeOut("#FFFFFF", 1000, this.respawn() );
 			}
 		},
 		
@@ -231,14 +233,20 @@
 			{
 				this.setCurrentAnimation("dead");
 
-				// flash the screen
-				me.game.viewport.fadeIn("#FFFFFF", 75);
-				
 				// DIE sound!!
-				me.audio.play("die", false);
+				me.audio.play("die_post", false);
 				
-				// you WON this Game
-				this.won();
+				// flash the screen
+//				me.game.viewport.fadeIn("#FFFFFF", 75);
+				me.game.viewport.fadeIn("#FFFFFF", 150, this.won() );
+
+				if ( parseInt(me.gamestat.getItemValue("score")) < parseInt(me.gamestat.getItemValue("hiscore")) )
+				{
+					console.log(me.gamestat.getItemValue("score"));
+					me.gamestat.setValue("hiscore", parseInt( me.gamestat.getItemValue("score")) );
+				}
+			
+				this.dying = true;
 			}
 		},
 		
@@ -639,7 +647,7 @@
 		
 			// bounding box
 //			this.updateColRect(-1,0,4,28);
-			this.updateColRect(5,15, 10,22);
+			this.updateColRect(-1,0, 10,22);
 
 			// walking animatin
 			this.addAnimation ("walk", [3,4,5]);
@@ -804,45 +812,31 @@
 	/************************************************************************************/
 	var DnaPoolObject = me.HUD_Item.extend(
 	{	
-		init: function(x, y)
+		init: function(x, y, val)
 		{
          // call the parent constructor
-			this.parent(x, y);
+			this.parent(x, y, val);
 			// create a font
-			this.font = new me.BitmapFont("font16px", 16);
+			this.font = new me.BitmapFont("atascii_16px", 16);
+			this.font.set("right");
 		},
-		/* -----
 
-			draw our dna
-			
-		------			*/
+		// update the item value
+		update : function(value) {
+			this.parent(value);
+			if ( this.value != me.gamestat.getItemValue("score") )
+			{
+				me.gamestat.setValue("score", this.value);
+			}
+			return true;
+		},
+
+		//	draw our dna
 		draw : function (context, x, y)
 		{
-			this.font.draw (context, this.value, this.pos.x +x, this.pos.y+y);
+			this.font.draw (context, "MUTATIONS", this.pos.x +x+505, this.pos.y+y);
+			this.font.draw (context, this.value, this.pos.x +x+545, this.pos.y+y);
 		}
-	
 	});
 
-	// Display Text
-	var TextObject = me.HUD_Item.extend(
-	{	
-		init: function(x, y)
-		{
-         // call the parent constructor
-			this.parent(x, y);
-			// create a font
-			this.font = new me.BitmapFont("font16px", 16);
-		},
-		/* -----
-
-			draw our dna
-			
-		------			*/
-		draw : function (context, x, y)
-		{
-			this.font.draw (context, "MUTATIONS", this.pos.x +x, this.pos.y+y);
-		}
-	
-	});
-	
-	// END
+// END
